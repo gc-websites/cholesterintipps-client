@@ -103,7 +103,7 @@ const Generation = () => {
       );
       delete article.secondAdBanner.image_prompt;
 
-      article.category = 1;
+      article.category = 3;
       article.author = 1;
 
       setStatus(
