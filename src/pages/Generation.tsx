@@ -1,77 +1,77 @@
 import { useState } from 'react';
 
 const Generation = () => {
-  const [query, setQuery] = useState('');
-  const [query1, setQuery1] = useState('');
-  const [query2, setQuery2] = useState('');
-  const [query3, setQuery3] = useState('');
-  const [query4, setQuery4] = useState('');
-  const [query5, setQuery5] = useState('');
-  const [query6, setQuery6] = useState('');
-  const [query7, setQuery7] = useState('');
-  const [query8, setQuery8] = useState('');
-  const [query9, setQuery9] = useState('');
-  const [query10, setQuery10] = useState('');
-  const [status, setStatus] = useState<React.ReactNode>(null);
-  const [multiStatus, setMultiStatus] = useState(null);
-  const [isMulti, setIsMulti] = useState(false);
+  // const [query, setQuery] = useState('');
+  // const [query1, setQuery1] = useState('');
+  // const [query2, setQuery2] = useState('');
+  // const [query3, setQuery3] = useState('');
+  // const [query4, setQuery4] = useState('');
+  // const [query5, setQuery5] = useState('');
+  // const [query6, setQuery6] = useState('');
+  // const [query7, setQuery7] = useState('');
+  // const [query8, setQuery8] = useState('');
+  // const [query9, setQuery9] = useState('');
+  // const [query10, setQuery10] = useState('');
+  // const [status, setStatus] = useState<React.ReactNode>(null);
+  // const [multiStatus, setMultiStatus] = useState(null);
+  // const [isMulti, setIsMulti] = useState(false);
 
-  const handleSetMulti = () => {
-    setStatus(null);
-    setIsMulti(true);
-  };
-  const handleSetSingle = () => setIsMulti(false);
+  // const handleSetMulti = () => {
+  //   setStatus(null);
+  //   setIsMulti(true);
+  // };
+  // const handleSetSingle = () => setIsMulti(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.length < 3) return;
-    setStatus('Creating post...');
-    const articleRes = await fetch(
-      'https://dev.nice-advice.info/generate-post',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
-      },
-    );
-    if (articleRes) {
-      setStatus('Post created successfully');
-    } else {
-      setStatus('Post creating ERROR');
-    }
-  };
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (query.length < 3) return;
+  //   setStatus('Creating post...');
+  //   const articleRes = await fetch(
+  //     'https://dev.nice-advice.info/generate-post',
+  //     {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ query }),
+  //     },
+  //   );
+  //   if (articleRes) {
+  //     setStatus('Post created successfully');
+  //   } else {
+  //     setStatus('Post creating ERROR');
+  //   }
+  // };
 
-  const handleSubmitMulti = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query1.length < 3) return;
-    const multiQuery = [
-      query1,
-      query2,
-      query3,
-      query4,
-      query5,
-      query6,
-      query7,
-      query8,
-      query9,
-      query10,
-    ];
-    const multiQueryFiltered = multiQuery.filter(str => str.trim() !== '');
-    setMultiStatus('Creating posts...');
-    const articlesRes = await fetch(
-      'https://dev.nice-advice.info/generate-posts',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topics: multiQueryFiltered }),
-      },
-    );
-    if (articlesRes) {
-      setMultiStatus('Posts created successfully');
-    } else {
-      setMultiStatus('Posts creating ERROR');
-    }
-  };
+  // const handleSubmitMulti = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (query1.length < 3) return;
+  //   const multiQuery = [
+  //     query1,
+  //     query2,
+  //     query3,
+  //     query4,
+  //     query5,
+  //     query6,
+  //     query7,
+  //     query8,
+  //     query9,
+  //     query10,
+  //   ];
+  //   const multiQueryFiltered = multiQuery.filter(str => str.trim() !== '');
+  //   setMultiStatus('Creating posts...');
+  //   const articlesRes = await fetch(
+  //     'https://dev.nice-advice.info/generate-posts',
+  //     {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ topics: multiQueryFiltered }),
+  //     },
+  //   );
+  //   if (articlesRes) {
+  //     setMultiStatus('Posts created successfully');
+  //   } else {
+  //     setMultiStatus('Posts creating ERROR');
+  //   }
+  // };
 
   return (
     <div className="h-screen flex justify-center items-center">
