@@ -75,7 +75,7 @@ const Generation = () => {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="flex flex-col gap-4 max-w-2xl w-full px-4">
+      {/* <div className="flex flex-col gap-4 max-w-2xl w-full px-4">
         <div className="flex justify-around">
           <button
             className="text-xl border rounded-full p-2"
@@ -240,7 +240,8 @@ const Generation = () => {
             </form>
           </div>
         )}
-      </div>
+      </div> */}
+      <h1>Automatic generation ON</h1>
     </div>
   );
 };
