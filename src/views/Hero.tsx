@@ -36,7 +36,7 @@ const Hero = () => {
 
   return (
     <section className="container section__padding pt-0">
-      <h1 className="section__title mb-6 invisible">Nice Advice</h1>
+      <h1 className="section__title mb-6 invisible">Cholesterin Tipps</h1>
       {popularPosts && popularPosts.length > 0 && (
         <div className="grid md:grid-cols-[70%_30%] gap-6">
           <Link
@@ -45,13 +45,13 @@ const Hero = () => {
           >
             <div className="flex items-center py-4 flex-wrap gap-4">
               <img
-                src={popularPosts[0].author.avatar.url}
-                alt={popularPosts[0].author.name}
+                src={popularPosts[0].author_2.avatar.url}
+                alt={popularPosts[0].author_2.name}
                 className="rounded-full w-12 h-12"
               />
               <h5 className="section__title text-base font-bold">
                 <p className="text-mainText dark:text-white">
-                  {popularPosts[0].author.name}
+                  {popularPosts[0].author_2.name}
                 </p>
               </h5>
               <img src={dot} alt="dot" className="w-2 h-2" />
@@ -94,13 +94,13 @@ const Hero = () => {
               >
                 <div className="flex items-center pb-2 flex-wrap gap-3">
                   <img
-                    src={post.author.avatar.url}
-                    alt={post.author.name}
+                    src={post.author_2.avatar.url}
+                    alt={post.author_2.name}
                     className="rounded-full w-9 h-9"
                   />
                   <h5 className="section__title text-sm font-bold">
                     <p className="text-mainText dark:text-white">
-                      {post.author.name}
+                      {post.author_2.name}
                     </p>
                   </h5>
                   <img src={dot} alt="dot" className="w-2 h-2" />

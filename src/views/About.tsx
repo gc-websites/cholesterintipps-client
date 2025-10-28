@@ -3,18 +3,18 @@ import { goals, vision, values } from '../utils/Icons';
 const About = () => {
   return (
     <section className="container section__padding">
-      <h2 className="section__title mb-6">About Us</h2>
+      <h2 className="section__title mb-6">Über uns</h2>
       <p className="section__description mb-4">
-        Welcome to our information portal! Our mission is to provide readers
-        with the most engaging and up-to-date articles across various topics.
-        Our team of experienced writers explores and highlights subjects that
-        resonate with contemporary society.
+        Willkommen auf unserem Informationsportal! Unsere Mission ist es, den
+        Lesern die interessantesten und aktuellsten Artikel zu verschiedenen
+        Themen bereitzustellen. Unser Team erfahrener Autoren recherchiert und
+        beleuchtet Themen, die in der modernen Gesellschaft von Bedeutung sind.
       </p>
       <p className="section__description mb-4">
-        We believe that knowledge is power. Our materials aim to inform,
-        inspire, and broaden the horizons of our readers. Whether you're seeking
-        advice on a healthy lifestyle, technological news, or cultural reviews,
-        we have something for everyone.
+        Wir glauben, dass Wissen Macht ist. Unsere Inhalte sollen informieren,
+        inspirieren und den Horizont unserer Leser erweitern. Ob Sie nach
+        Ratschlägen zu einem gesunden Lebensstil, technologischen Neuigkeiten
+        oder kulturellen Rezensionen suchen – bei uns ist für jeden etwas dabei.
       </p>
 
       <div className="flex flex-wrap justify-center items-start mt-8">
@@ -27,11 +27,11 @@ const About = () => {
           >
             {goals}
           </svg>
-          <h3 className="section__title mb-2 text-center">Our Mission</h3>
+          <h3 className="section__title mb-2 text-center">Unsere Mission</h3>
           <p className="section__description">
-            To deliver high-quality, reliable, and diverse content that caters
-            to the interests and needs of our readers, fostering a community of
-            informed individuals.
+            Hochwertige, verlässliche und vielfältige Inhalte bereitzustellen,
+            die den Interessen und Bedürfnissen unserer Leser entsprechen und
+            eine Gemeinschaft informierter Menschen fördern.
           </p>
         </div>
 
@@ -44,11 +44,11 @@ const About = () => {
           >
             {vision}
           </svg>
-          <h3 className="section__title mb-2 text-center">Our Vision</h3>
+          <h3 className="section__title mb-2 text-center">Unsere Vision</h3>
           <p className="section__description">
-            To become a leading platform for insightful articles, where readers
-            can find inspiration, knowledge, and a deeper understanding of the
-            world around them.
+            Eine führende Plattform für aufschlussreiche Artikel zu werden, auf
+            der Leser Inspiration, Wissen und ein tieferes Verständnis für die
+            Welt um sie herum finden können.
           </p>
         </div>
 
@@ -61,11 +61,11 @@ const About = () => {
           >
             {values}
           </svg>
-          <h3 className="section__title mb-2 text-center">Our Values</h3>
+          <h3 className="section__title mb-2 text-center">Unsere Werte</h3>
           <p className="section__description">
-            Integrity, curiosity, and inclusivity are at the heart of everything
-            we do. We strive to uphold these principles in all our content and
-            interactions.
+            Integrität, Neugier und Inklusivität stehen im Mittelpunkt all
+            unseres Handelns. Wir bemühen uns, diese Prinzipien in all unseren
+            Inhalten und Interaktionen aufrechtzuerhalten.
           </p>
         </div>
       </div>

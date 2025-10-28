@@ -99,16 +99,16 @@ const Post = () => {
         <div className="group p-4 rounded-lg h-full bg-white dark:bg-additionalText flex flex-col">
           <div className="flex items-center py-4 flex-wrap gap-4">
             <Link
-              to={`/author/${post.author.documentId}`}
+              to={`/author/${post.author_2.documentId}`}
               className="flex items-center flex-wrap gap-4"
             >
               <img
-                src={post.author.avatar.url}
-                alt={post.author.name}
+                src={post.author_2.avatar.url}
+                alt={post.author_2.name}
                 className="rounded-full w-12 h-12"
               />
               <h5 className="section__title underline hover:text-main transition text-base font-bold">
-                {post.author.name}
+                {post.author_2.name}
               </h5>
             </Link>
             <img src={dot} alt="dot" className="w-2 h-2" />
@@ -125,7 +125,7 @@ const Post = () => {
             {post.title}
           </h2>
           <span className="section__title block text-2xl text-main dark:text-main mb-6">
-            {post.category.name}
+            {post.category_2.name}
           </span>
 
           <div className="w-full aspect-[4/3] overflow-hidden rounded-lg">
@@ -143,7 +143,7 @@ const Post = () => {
               truncate={false}
             />
 
-            <AdList ads={post.ads} />
+            {/* <AdList ads={post.ads} /> */}
 
             {post.paragraphs.map(
               ({ id, subtitle, description, image, ads }) => (
@@ -156,7 +156,7 @@ const Post = () => {
                     className="section__description text-base"
                     truncate={false}
                   />
-                  <AdList ads={ads} />
+                  {/* <AdList ads={ads} /> */}
                   <img
                     src={image.url}
                     alt={subtitle}
@@ -169,7 +169,7 @@ const Post = () => {
         </div>
 
         <div className="flex flex-col gap-6 h-full">
-          <div className="bg-white dark:bg-additionalText p-4 rounded-lg">
+          {/* <div className="bg-white dark:bg-additionalText p-4 rounded-lg">
             <h3 className="section__title text-xl font-bold mb-4">
               Advertisements
             </h3>
@@ -180,7 +180,7 @@ const Post = () => {
                 className="w-full border-gray-400 border-[1px] rounded"
               />
             </a>
-          </div>
+          </div> */}
 
           {relatedPosts.slice(0, 4).map(post => (
             <Link
@@ -190,12 +190,12 @@ const Post = () => {
             >
               <div className="flex items-center pb-2 flex-wrap gap-3">
                 <img
-                  src={post.author.avatar.url}
-                  alt={post.author.name}
+                  src={post.author_2.avatar.url}
+                  alt={post.author_2.name}
                   className="rounded-full w-9 h-9"
                 />
                 <h5 className="section__title text-sm font-bold">
-                  {post.author.name}
+                  {post.author_2.name}
                 </h5>
                 <img src={dot} alt="dot" className="w-2 h-2" />
                 <p className="section__description text-additionalText text-xs">

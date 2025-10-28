@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Logo from '../components/Logo';
 import Socials from '../components/Socials';
 import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom';
+import EmailForm from '../components/EmailForm';
 
 interface Category {
   documentId: number | string;
@@ -14,6 +15,11 @@ interface FooterProps {
 }
 
 const Footer: FC<FooterProps> = ({ categories }) => {
+  const [openForm, setOpenForm] = useState(false);
+
+  const handleFormOpen = () => setOpenForm(true);
+  const handleFormClose = () => setOpenForm(false);
+
   return (
     <footer className="bg-main2">
       <div className="container pt-14 flex flex-col gap-16 text-white">
@@ -25,7 +31,7 @@ const Footer: FC<FooterProps> = ({ categories }) => {
         <div className="flex flex-col md:flex-row gap-x-48 gap-y-8">
           <div className="flex flex-col gap-8">
             <h4 className="section__description text-white font-merriweather font-semibold">
-              Categories
+              Kategorien
             </h4>
             <NavBar
               categories={categories}
@@ -35,26 +41,29 @@ const Footer: FC<FooterProps> = ({ categories }) => {
           </div>
           <div className="flex flex-col gap-8">
             <h4 className="section__description text-white font-merriweather font-semibold">
-              About
+              Über
             </h4>
             <div className="flex flex-col gap-5">
               <Link
                 to="/privacy"
                 className="section__description text-white font-light"
               >
-                Privacy Policy
+                Datenschutzerklärung
               </Link>
               <Link
                 to="/terms"
                 className="section__description text-white font-light"
               >
-                Terms
+                Bedingungen
               </Link>
             </div>
+            <button className="border rounded p-2" onClick={handleFormOpen}>
+              Kontaktieren Sie uns
+            </button>
           </div>
           <div className="flex flex-col gap-8">
             <h4 className="section__description text-white font-merriweather font-semibold">
-              Follow us:
+              Folge uns:
             </h4>
             <Socials
               textClassName="text-white font-light"
@@ -65,10 +74,11 @@ const Footer: FC<FooterProps> = ({ categories }) => {
         <div className="flex flex-col">
           <hr className="w-full border-t-2 border-white m-0 opacity-50" />
           <p className="section__description text-skin text-white py-12 font-light">
-            @2025 Nice Advice. All rights reserved.
+            @2025 Cholesterin Tipps. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>
+      {openForm && <EmailForm handleFormClose={handleFormClose} />}
     </footer>
   );
 };

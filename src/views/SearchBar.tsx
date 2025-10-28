@@ -21,7 +21,9 @@ const SearchBar = () => {
   return (
     <section className="bg-main2" id="search">
       <div className="container section__padding flex flex-col gap-10">
-        <h2 className="section__title text-white">Search on Nice Advice</h2>
+        <h2 className="section__title text-white">
+          Suchen nach CholesterinTipps
+        </h2>
         <div className="relative w-full">
           <svg
             className="absolute left-3 top-1/2 -translate-y-1/2 fill-white w-5 h-5 pointer-events-none"
@@ -36,7 +38,7 @@ const SearchBar = () => {
             value={query}
             onChange={e => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Enter your search topics"
+            placeholder="Geben Sie Ihre Suchthemen ein"
             className="pl-16 w-full bg-transparent border-0 border-b-2 border-white focus:border-[#C0FAF5] text-white placeholder-[#C0FAF5] focus:outline-none py-6"
           />
           <button
@@ -50,7 +52,7 @@ const SearchBar = () => {
           }
         `}
           >
-            Search
+            Suchen
           </button>
         </div>
       </div>

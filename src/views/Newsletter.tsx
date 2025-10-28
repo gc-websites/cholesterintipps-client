@@ -24,10 +24,10 @@ const Newsletter = () => {
     <section className="section__padding">
       <div className="rounded-lg container py-20 bg-main2 text-center">
         <h2 className="section__title text-white text-4xl leading-[56px] mb-6">
-          Sign Up for Our Newsletters
+          Melden Sie sich für unsere Newsletter an
         </h2>
         <p className="section__description text-white text-base mb-12">
-          Get the latest articles to your inbox
+          Erhalten Sie die neuesten Artikel direkt in Ihr Postfach
         </p>
 
         <form
@@ -41,7 +41,7 @@ const Newsletter = () => {
               setQuery(e.target.value);
               setStatus(null);
             }}
-            placeholder="Enter email here"
+            placeholder="E-Mail hier eingeben"
             className="section__description text-base flex-grow px-4 py-4 text-gray-800 focus:outline-none bg-white dark:bg-additionalText"
           />
           <button

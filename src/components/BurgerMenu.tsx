@@ -65,7 +65,7 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
             {close}
           </svg>
         </button>
-        <Logo className="text-3xl w-fit" />
+        <Logo className="text-2xl w-fit" />
         <ThemeToggle />
         <NavBar
           className="flex flex-col gap-y-5"
@@ -75,7 +75,7 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
         />
         <hr className="w-full border-t-2 border-additionalText dark:border-white m-0 opacity-20" />
         <div className="flex flex-col gap-4">
-          <h4 className="font-inter text-lg">Follow us:</h4>
+          <h4 className="font-inter text-lg">Folgen Sie uns:</h4>
           <Socials
             textClassName="text-additionalText dark:text-white"
             IconsClassName="fill-additionalText dark:fill-white"

@@ -16,11 +16,11 @@ const Logo: FC<LogoProps> = ({
       href="/"
       className={`font-bold font-merriweather text-main ${className}`}
     >
-      Nice<span className={`text-main3 ${spanClassName}`}>Advice</span>
+      Cholesterin<span className={`text-main3 ${spanClassName}`}>Tipps</span>
     </a>
   ) : (
     <p className={`font-bold font-merriweather text-main ${className}`}>
-      Nice<span className={`text-main3 ${spanClassName}`}>Advice</span>
+      Cholesterin<span className={`text-main3 ${spanClassName}`}>Tipps</span>
     </p>
   );
 };
