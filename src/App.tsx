@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga4';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Suspense, lazy, useEffect, useState } from 'react';
 import { getCategories } from './services/postsAPI';
@@ -7,6 +8,7 @@ import Loader from './components/Loader';
 import Page404 from './pages/Page404';
 import ScrollToTop from './utils/ScrollToTop';
 import PrivateRouteWithPassword from './components/PrivateRouteWithPassword';
+import usePageTracking from './utils/GAplus';
 
 const Home = lazy(() => import('./pages/Home'));
 const Post = lazy(() => import('./pages/Post'));
@@ -19,7 +21,11 @@ const Generation = lazy(() => import('./pages/Generation'));
 const Product = lazy(() => import('./pages/Product'));
 const ProductGeneration = lazy(() => import('./pages/ProductGeneration'));
 
+ReactGA.initialize('G-1LBJQ5Y4HC');
+ReactGA.send('pageview');
+
 const App = () => {
+  usePageTracking();
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
