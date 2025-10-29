@@ -21,7 +21,7 @@ const Generation = lazy(() => import('./pages/Generation'));
 const Product = lazy(() => import('./pages/Product'));
 const ProductGeneration = lazy(() => import('./pages/ProductGeneration'));
 
-ReactGA.initialize('G-1LBJQ5Y4HC');
+ReactGA.initialize('G-H7EHGC3KZ0');
 ReactGA.send('pageview');
 
 const App = () => {
