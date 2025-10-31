@@ -54,7 +54,7 @@ export const getPostsByCategory = async (
   pageSize = 10,
 ) => {
   const posts = await apiData.get(
-    `/post2s?filters[category_2][documentId][$eq]=${categoryDocumentId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`,
+    `/post2s?filters[category_2][documentId][$eq]=${categoryDocumentId}&sort[0]=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`,
   );
   return posts.data;
 };

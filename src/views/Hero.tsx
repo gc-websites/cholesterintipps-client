@@ -56,7 +56,7 @@ const Hero = () => {
               </h5>
               <img src={dot} alt="dot" className="w-2 h-2" />
               <p className="section__description text-additionalText text-sm">
-                {new Intl.DateTimeFormat('en-US', {
+                {new Intl.DateTimeFormat('de-DE', {
                   month: 'short',
                   day: '2-digit',
                   year: 'numeric',
@@ -105,7 +105,7 @@ const Hero = () => {
                   </h5>
                   <img src={dot} alt="dot" className="w-2 h-2" />
                   <p className="section__description text-additionalText text-xs">
-                    {new Intl.DateTimeFormat('en-US', {
+                    {new Intl.DateTimeFormat('de-DE', {
                       month: 'short',
                       day: '2-digit',
                       year: 'numeric',
