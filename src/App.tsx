@@ -31,6 +31,27 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (window.cookieconsent) {
+      window.cookieconsent.initialise({
+        palette: {
+          popup: { background: '#000' },
+          button: { background: '#f1d600', text: '#000' },
+        },
+        theme: 'classic',
+        type: 'opt-in', // opt-in = пользователь должен согласиться
+        content: {
+          message:
+            'Wir verwenden Cookies, um die Leistung der Website zu verbessern.',
+          allow: 'Erlauben',
+          deny: 'Verbot',
+          link: 'Mehr lesen',
+          href: '/privacy', // твоя страница политики
+        },
+      });
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
