@@ -55,7 +55,7 @@ const ProductGeneration = () => {
         </button>
       </form>
       {status && <p>{status}</p>}
-      {postId && <p>https://nice-advice.info/product/{postId}</p>}
+      {postId && <p>https://cholesterintipps.de/product/{postId}</p>}
     </div>
   );
 };

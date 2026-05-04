@@ -6,6 +6,8 @@ import Loader from '../components/Loader';
 import Page404 from './Page404';
 import RenderDescription from '../components/RenderDescription';
 import Pagination from '../components/Pagination';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { buildCanonical, stripHtml, useDocumentMeta } from '../utils/seo';
 
 const Author = () => {
   const { pathname } = useLocation();
@@ -36,31 +38,55 @@ const Author = () => {
     fetchData();
   }, [authorId]);
 
+  const hasAuthor = author && Object.keys(author).length > 0;
+
+  useDocumentMeta({
+    title: hasAuthor ? `Autor: ${(author as any).name}` : undefined,
+    description: hasAuthor
+      ? stripHtml(
+          (author as any).description ||
+            `Artikel und Beiträge von ${(author as any).name} bei CholesterinTipps.`,
+          160,
+        )
+      : undefined,
+    canonical: hasAuthor
+      ? buildCanonical(`/author/${(author as any).documentId}`)
+      : undefined,
+    type: 'website',
+  });
+
   if (isLoading) {
     return <Loader />;
   }
 
-  if (!author || Object.keys(author).length === 0) {
+  if (!hasAuthor) {
     return <Page404 />;
   }
 
   return (
     <div>
+      <Breadcrumbs
+        schemaId={`author-${(author as any).documentId}`}
+        items={[
+          { name: 'Startseite', href: '/' },
+          { name: (author as any).name },
+        ]}
+      />
       <section>
         <div className="bg-main pt-16 md:pt-36 pb-10">
           <div className="relative container">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="relative">
                 <p className="section__title pb-8 text-white text-3xl font-normal">
-                  Writer
+                  Autor
                 </p>
-                <h4 className="section__title text-white text-4xl md:text-6xl">
-                  {author.name}
-                </h4>
+                <h1 className="section__title text-white text-4xl md:text-6xl">
+                  {(author as any).name}
+                </h1>
               </div>
               <img
-                src={author.avatar.url}
-                alt={author.name}
+                src={(author as any).avatar.url}
+                alt={(author as any).name}
                 className="absolute md:top-8 -top-12 right-12 sm:right-0 rounded-full max-w-28 max-h-28 sm:max-w-32 sm:max-h-32 md:max-w-64 md:max-h-64"
               />
             </div>
@@ -69,15 +95,15 @@ const Author = () => {
         <div className="container mt-8">
           <div className="max-w-full md:max-w-[70%]">
             <RenderDescription
-              description={author.description}
+              description={(author as any).description}
               className="section__description"
             />
           </div>
         </div>
         <div className="container section__padding">
-          <h4 className="section__title pb-4 text-2xl md:text-3xl">
-            Latest from {author.name}:
-          </h4>
+          <h2 className="section__title pb-4 text-2xl md:text-3xl">
+            Neueste Artikel von {(author as any).name}:
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 h-full">
             {posts?.map(post => (
               <Link
@@ -102,7 +128,7 @@ const Author = () => {
                     truncate={true}
                   />
                   <p className="section__description text-main dark:text-main text-base">
-                    Read more
+                    Weiterlesen
                   </p>
                 </div>
               </Link>

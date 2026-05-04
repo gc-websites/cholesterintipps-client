@@ -202,9 +202,11 @@ const InfinitePost = ({ postIds, getReadingCount }) => {
                     />
                   </div>
                   <div className="flex flex-col gap-2 flex-grow">
-                    <p className="section__description text-sm text-main dark:text-main">
-                      {getReadingCount(post.documentId)} reading now
-                    </p>
+                    {getReadingCount(post.documentId) > 0 && (
+                      <p className="section__description text-sm text-main dark:text-main">
+                        {getReadingCount(post.documentId)} liest gerade
+                      </p>
+                    )}
                     <h3 className="section__title text-lg text-mainText">
                       {post.title}
                     </h3>
@@ -214,7 +216,7 @@ const InfinitePost = ({ postIds, getReadingCount }) => {
                       truncate={true}
                     />
                     <p className="section__description text-main dark:text-main text-sm mt-auto">
-                      Read more
+                      Weiterlesen
                     </p>
                   </div>
                 </Link>

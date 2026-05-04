@@ -11,6 +11,8 @@ import Page404 from './Page404';
 import Pagination from '../components/Pagination';
 import Disclaimer from '../views/Disclaimer';
 import RenderDescription from '../components/RenderDescription';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { buildCanonical, useDocumentMeta } from '../utils/seo';
 import { io } from 'socket.io-client';
 
 const socket = io('https://vivid-triumph-4386b82e17.strapiapp.com');
@@ -70,11 +72,24 @@ const Category = () => {
     fetchData();
   }, [categoryId, currentPage]);
 
+  const hasCategory = category && Object.keys(category).length > 0;
+
+  useDocumentMeta({
+    title: hasCategory ? (category as any).name : undefined,
+    description: hasCategory
+      ? `Artikel und Ratgeber in der Kategorie „${(category as any).name}“ auf CholesterinTipps.`
+      : undefined,
+    canonical: hasCategory
+      ? buildCanonical(`/category/${(category as any).documentId}`)
+      : undefined,
+    image: hasCategory ? (category as any).image?.url : undefined,
+  });
+
   if (isLoading) {
     return <Loader />;
   }
 
-  if (!category || Object.keys(category).length === 0) {
+  if (!hasCategory) {
     return <Page404 />;
   }
 
@@ -82,19 +97,27 @@ const Category = () => {
 
   return (
     <div>
+      <Breadcrumbs
+        schemaId={`category-${(category as any).documentId}`}
+        items={[
+          { name: 'Startseite', href: '/' },
+          { name: 'Kategorien' },
+          { name: (category as any).name },
+        ]}
+      />
       <section className="container mx-auto py-8">
         <div>
           <div>
             <div className="relative vignette-container">
               <img
-                src={category.image.url}
-                alt={category.name}
+                src={(category as any).image.url}
+                alt={(category as any).name}
                 className="w-full object-cover object-center rounded max-h-96 mb-6"
               />
               <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 z-40 rounded">
-                <h2 className="section__title text-white md:text-4xl text-xl font-bold text-left">
-                  {category.name}
-                </h2>
+                <h1 className="section__title text-white md:text-4xl text-xl font-bold text-left">
+                  {(category as any).name}
+                </h1>
               </div>
             </div>
 
@@ -123,7 +146,7 @@ const Category = () => {
                         truncate={true}
                       />
                       <p className="section__description text-main dark:text-main text-base">
-                        Read more
+                        Weiterlesen
                       </p>
                     </div>
                   </Link>

@@ -1,0 +1,23 @@
+# https://cholesterintipps.de
+User-agent: *
+Allow: /
+Disallow: /generation
+Disallow: /generation/
+Disallow: /search?
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://cholesterintipps.de/sitemap.xml

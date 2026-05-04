@@ -36,7 +36,10 @@ const Hero = () => {
 
   return (
     <section className="container section__padding pt-0">
-      <h1 className="section__title mb-6 invisible">Cholesterin Tipps</h1>
+      <h1 className="sr-only">
+        CholesterinTipps – aktuelle Artikel zu Cholesterin, Ernährung und
+        Gesundheit
+      </h1>
       {popularPosts && popularPosts.length > 0 && (
         <div className="grid md:grid-cols-[70%_30%] gap-6">
           <Link
@@ -80,7 +83,7 @@ const Hero = () => {
                 truncate={true}
               />
               <p className="section__description text-main dark:text-main">
-                Read more
+                Weiterlesen
               </p>
             </div>
           </Link>
@@ -129,7 +132,7 @@ const Hero = () => {
                     truncate={true}
                   />
                   <p className="section__description text-main dark:text-main text-sm">
-                    Read more
+                    Weiterlesen
                   </p>
                 </div>
               </Link>

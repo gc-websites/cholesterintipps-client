@@ -56,12 +56,12 @@ const Newsletter = () => {
         </form>
         {status === 'success' && (
           <p className="section__description text-base text-white mt-4">
-            Thank you for subscribing!
+            Vielen Dank für Ihre Anmeldung!
           </p>
         )}
         {status === 'error' && (
           <p className="section__description text-base text-red-300 dark:text-red-300 mt-4">
-            Something went wrong. Try again.
+            Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.
           </p>
         )}
       </div>

@@ -6,6 +6,7 @@ import Pagination from '../components/Pagination';
 import Loader from '../components/Loader';
 import Categories from '../views/Categories';
 import RenderDescription from '../components/RenderDescription';
+import { useDocumentMeta } from '../utils/seo';
 
 const Search = ({ categories }) => {
   const [posts, setPosts] = useState([]);
@@ -16,6 +17,14 @@ const Search = ({ categories }) => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('query');
+
+  useDocumentMeta({
+    title: query ? `Suche: ${query}` : 'Suche',
+    description: query
+      ? `Suchergebnisse für „${query}“ auf CholesterinTipps.`
+      : 'Durchsuchen Sie Artikel auf CholesterinTipps.',
+    noindex: true,
+  });
 
   useEffect(() => {
     if (!query || query.length < 3) return;
@@ -44,9 +53,9 @@ const Search = ({ categories }) => {
   return (
     <div>
       <section className="container pt-12">
-        <h2 className="section__title mb-6 text-mainText break-words">
-          Search results for: "{query}"
-        </h2>
+        <h1 className="section__title mb-6 text-mainText break-words">
+          Suchergebnisse für: „{query}“
+        </h1>
         {posts.length > 0 ? (
           <div>
             <div>
@@ -74,7 +83,7 @@ const Search = ({ categories }) => {
                         truncate={true}
                       />
                       <p className="section__description text-main dark:text-main text-base">
-                        Read more
+                        Weiterlesen
                       </p>
                     </div>
                   </Link>
@@ -88,7 +97,11 @@ const Search = ({ categories }) => {
             />
           </div>
         ) : (
-          !isLoading && <p className="section__description">Nothing found 😕</p>
+          !isLoading && (
+            <p className="section__description">
+              Leider keine Treffer gefunden.
+            </p>
+          )
         )}
       </section>
       <Categories categories={categories} />

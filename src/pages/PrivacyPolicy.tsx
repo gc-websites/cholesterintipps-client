@@ -1,163 +1,163 @@
+import { buildCanonical, useDocumentMeta } from '../utils/seo';
+
 const PrivacyPolicy = () => {
+  useDocumentMeta({
+    title: 'Datenschutzerklärung',
+    description:
+      'Datenschutzerklärung von CholesterinTipps – Informationen zu Datenverarbeitung, Cookies, Newsletter, Webanalyse und Ihren Rechten gemäß DSGVO.',
+    canonical: buildCanonical('/privacy'),
+  });
+
   return (
     <div className="container section__padding flex flex-col gap-8">
-      <h2 className="section__title text-3xl text-center">
-        Datenschutzrichtlinie
-      </h2>
+      <h1 className="section__title text-3xl text-center">
+        Datenschutzerklärung
+      </h1>
       <p className="section__description">
-        Diese Datenschutzrichtlinie wurde zuletzt am 1. April 2022 überarbeitet
-        und tritt an diesem Datum in Kraft. DURCH DEN ZUGRIFF AUF DIESE WEBSITE
-        ERKLÄREN SIE, DASS SIE DIE BEDINGUNGEN DIESER DATENSCHUTZRICHTLINIE IN
-        IHRER GESAMTHEIT GELESEN HABEN UND IHNEN ZUSTIMMEN.
+        Diese Datenschutzerklärung gilt für die Website{' '}
+        <strong>cholesterintipps.de</strong> (im Folgenden „Website“,
+        „CholesterinTipps“, „wir“ oder „uns“). Wir nehmen den Schutz Ihrer
+        personenbezogenen Daten ernst und behandeln Ihre personenbezogenen Daten
+        vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften
+        (DSGVO, BDSG) sowie dieser Datenschutzerklärung.
       </p>
-      <ul className="section__description list-disc flex flex-col gap-4">
-        <li>
-          Wenn Sie sich für unseren Newsletter anmelden, senden wir Ihnen
-          E-Mails und andere Inhalte, die für Sie von Interesse sein könnten.
-          Sie können sich jederzeit von unseren Marketing-E-Mails abmelden.
-        </li>
-        <li>
-          Wir erfassen personenbezogene Daten, Website-Daten und anonyme Daten
-          (wie unten definiert), um unsere Website(s) für Sie nützlicher zu
-          gestalten.
-        </li>
-        <li>
-          Wenn wir personenbezogene Daten (wie unten definiert) erheben, werden
-          wir diese Informationen nur für rechtmäßige Zwecke verwenden und so
-          lange speichern und aufbewahren, wie es nach geltendem Recht
-          erforderlich ist.
-        </li>
-        <li>
-          Sie können uns jederzeit kontaktieren, um personenbezogene Daten, die
-          wir über Sie erhoben und gespeichert haben, zu aktualisieren oder
-          löschen zu lassen.
-        </li>
+
+      <h3 className="section__title">1. Verantwortlicher</h3>
+      <p className="section__description">
+        Verantwortlich für die Datenverarbeitung auf dieser Website ist die
+        Redaktion von CholesterinTipps. Sie erreichen uns per E-Mail unter{' '}
+        <a
+          href="mailto:kontakt@cholesterintipps.de"
+          className="underline text-main"
+        >
+          kontakt@cholesterintipps.de
+        </a>
+        . Die vollständigen Anbieterangaben finden Sie im Impressum.
+      </p>
+
+      <h3 className="section__title">2. Welche Daten wir erheben</h3>
+      <p className="section__description">
+        Beim Besuch unserer Website werden automatisch Informationen erhoben,
+        die Ihr Browser an unseren Server übermittelt (sog. Server-Logfiles):
+      </p>
+      <ul className="section__description list-disc pl-6 flex flex-col gap-2">
+        <li>IP-Adresse (gekürzt/anonymisiert, soweit technisch möglich)</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Browsertyp und -version, Betriebssystem</li>
+        <li>Referrer-URL (die zuvor besuchte Seite)</li>
+        <li>Aufgerufene Seite bzw. Datei</li>
       </ul>
       <p className="section__description">
-        Vielen Dank für Ihren Besuch auf cholesterintipps.com (die „Website“).
-        Die Website ist Eigentum von Assembly Digital Limited und ihren
-        verbundenen Unternehmen („Assembly“, „unser“, „wir“ oder „uns“).
-        Assembly verpflichtet sich, Ihre Privatsphäre zu schützen. Wir haben
-        diese Datenschutzrichtlinie („Datenschutzrichtlinie“) erstellt, um Ihnen
-        unsere Praktiken und Richtlinien im Zusammenhang mit allen Informationen
-        (wie Website-Daten, anonymen Daten und personenbezogenen Daten, jeweils
-        wie unten definiert) zu erläutern, die wir von Ihnen erfassen oder die
-        Sie uns zur Verfügung stellen, wenn Sie auf die Website zugreifen oder
-        diese sowie damit verbundene Produkte und/oder Dienstleistungen nutzen.
+        Diese Daten verarbeiten wir auf Grundlage unseres berechtigten
+        Interesses an einer technisch fehlerfreien und sicheren Bereitstellung
+        der Website (Art. 6 Abs. 1 lit. f DSGVO). Eine Zusammenführung mit
+        anderen Datenquellen findet nicht statt.
       </p>
-      <h3 className="section__title">
-        Rechtmäßige Grundlage für die Datenverarbeitung
-      </h3>
+
+      <h3 className="section__title">3. Cookies</h3>
       <p className="section__description">
-        In bestimmten Rechtsordnungen ist die Verarbeitung Ihrer
-        personenbezogenen Daten (wie unten definiert) nur dann rechtmäßig, wenn
-        sie nach den Datenschutzgesetzen zulässig ist. In diesem Fall haben wir
-        für jede unserer Verarbeitungstätigkeiten (sofern keine Ausnahmeregelung
-        gilt) eine rechtmäßige Grundlage, wie nachstehend beschrieben:
+        Wir verwenden Cookies. Cookies sind kleine Textdateien, die auf Ihrem
+        Endgerät gespeichert werden. Technisch notwendige Cookies werden auf
+        Grundlage von Art. 6 Abs. 1 lit. f DSGVO eingesetzt. Alle weiteren
+        Cookies (insbesondere für Analyse und Werbung) setzen wir nur mit Ihrer
+        ausdrücklichen Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25
+        Abs. 1 TTDSG ein. Sie können Ihre Cookie-Einstellungen jederzeit über
+        unseren Cookie-Banner anpassen oder Cookies in Ihrem Browser
+        deaktivieren.
       </p>
-      <ul className="section__description list-disc flex flex-col gap-4">
-        <li>
-          Einwilligung. Durch die Nutzung dieser Website oder die anderweitige
-          Übermittlung Ihrer personenbezogenen Daten an uns erklären Sie sich
-          mit der Erhebung, Nutzung und Weitergabe Ihrer Daten gemäß dieser
-          Datenschutzrichtlinie einverstanden.
-        </li>
-        <li>
-          Berechtigtes Interesse. Wir verarbeiten Ihre personenbezogenen Daten
-          auf Grundlage berechtigter Interessen, insbesondere wenn diese für
-          Marketing- und Geschäftszwecke verwendet werden oder um mit Ihnen
-          Kontakt aufzunehmen, um ein Gespräch über Ihre Nutzung der Website
-          oder über Assembly-Newsletter, denen Sie beitreten möchten, zu
-          beginnen.
-        </li>
-        <li>
-          Gesetzliche Verpflichtung. Wir können Ihre personenbezogenen Daten
-          auch auf einer anderen rechtmäßigen Grundlage verarbeiten,
-          beispielsweise wenn die Verarbeitung erforderlich ist, um geltendem
-          Recht nachzukommen.
-        </li>
-      </ul>
-      <h3 className="section__title">
-        Wie wir personenbezogene und anonyme Daten erheben und verwenden
-      </h3>
+
+      <h3 className="section__title">4. Newsletter</h3>
       <p className="section__description">
-        Wenn Sie auf die Website zugreifen, sich für damit verbundene Produkte
-        und/oder Dienstleistungen registrieren oder sich für den Erhalt von
-        Newslettern und anderen Mitteilungen von uns anmelden, können wir
-        personenbezogene Daten und anonyme Daten von Ihnen erheben. Wir können
-        auch personenbezogene und anonyme Daten erfassen, wenn Sie uns
-        Informationen oder Mitteilungen senden. „Personenbezogene Daten“ sind
-        Daten, die es ermöglichen, Sie zu identifizieren oder mit Ihnen Kontakt
-        aufzunehmen, einschließlich – aber nicht beschränkt auf – Ihren Namen,
-        Ihre Telefonnummer, Ihre physische Adresse, Ihre IP-Adresse und Ihre
-        E-Mail-Adresse, wenn Sie auf die Website oder damit verbundene Produkte
-        und/oder Dienstleistungen zugreifen. „Anonyme Daten“ sind Daten über
-        Sie, die nicht mit Ihren personenbezogenen Daten verknüpft sind. Anonyme
-        Daten erlauben keine Identifizierung einzelner Personen. Um die Website
-        für Sie nützlicher zu gestalten, können unsere Server (die
-        möglicherweise von einem Drittanbieter gehostet werden) personenbezogene
-        oder anonyme Daten wie Browsertyp, Betriebssystem, IP-Adresse,
-        Domainname, Website-Nutzung und -Statistiken sowie Datum/Uhrzeit Ihres
-        Besuchs auf der Website erfassen. Wir können außerdem Cookies und
-        Navigationsdaten wie Uniform Resource Locators (URL) und verweisende
-        URLs verwenden, um Informationen über Datum und Uhrzeit Ihres Besuchs zu
-        sammeln. Darüber hinaus können wir personenbezogene und anonyme Daten
-        für Marktforschungszwecke und zur Verbesserung unserer Dienstleistungen
-        und der Website verwenden. Wir können anonyme Daten mit ausgewählten
-        Dritten und Geschäftspartnern teilen, jedoch nur, wenn diese
-        Informationen nicht mit Ihren personenbezogenen Daten verknüpft sind, es
-        sei denn, wir haben Sie darüber informiert (wie in dieser
-        Datenschutzrichtlinie beschrieben) und Sie haben uns Ihre Zustimmung
-        erteilt. Assembly kann personenbezogene Daten und IP-Adressen verwenden,
-        um Nutzer der Website zu identifizieren, wenn wir es für notwendig
-        erachten, die Einhaltung der Website-Richtlinien durchzusetzen oder
-        unsere Dienste, die Website oder andere Nutzer der Website und/oder der
-        Dienste zu schützen.
+        Sofern Sie sich für unseren Newsletter anmelden, verarbeiten wir Ihre
+        E-Mail-Adresse, um Ihnen die im Newsletter angekündigten Informationen
+        zuzusenden. Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1
+        lit. a DSGVO. Sie können den Newsletter jederzeit über den Abmelde-Link
+        in jeder E-Mail oder per Nachricht an{' '}
+        <a
+          href="mailto:kontakt@cholesterintipps.de"
+          className="underline text-main"
+        >
+          kontakt@cholesterintipps.de
+        </a>{' '}
+        wieder abbestellen.
       </p>
-      <h3 className="section__title">Datensicherheit</h3>
+
+      <h3 className="section__title">5. Webanalyse (Google Analytics)</h3>
       <p className="section__description">
-        Assembly verpflichtet sich, die Sicherheit aller personenbezogenen
-        Daten, die von Assembly erfasst werden, zu schützen. Wir verwenden eine
-        Vielzahl branchenüblicher Sicherheitstechnologien und -verfahren, um
-        personenbezogene Daten vor unbefugtem Zugriff, unbefugter Nutzung oder
-        Offenlegung zu schützen. Trotz dieser Maßnahmen ist keine Methode der
-        Datenübertragung über das Internet oder der elektronischen Speicherung
-        zu 100 % sicher. Assembly kann die mit der Erhebung und Speicherung
-        personenbezogener Daten verbundenen Sicherheitsrisiken nicht vollständig
-        ausschließen, einschließlich etwaiger Fehler oder
-        Sicherheitsverletzungen. Wir bemühen uns, wirtschaftlich vertretbare
-        Maßnahmen zum Schutz Ihrer personenbezogenen Daten zu ergreifen, können
-        jedoch keine absolute Sicherheit garantieren. Im unwahrscheinlichen Fall
-        einer Datenschutzverletzung, bei der Ihre personenbezogenen Daten
-        kompromittiert wurden, wird Assembly Sie sowie die zuständigen Behörden
-        und Aufsichtsbehörden umgehend benachrichtigen. Wenn Sie sich in der
-        EU/dem EWR befinden und Assembly Ihre personenbezogenen Daten gemäß
-        dieser Datenschutzrichtlinie übermitteln muss, setzen wir wirtschaftlich
-        angemessene Maßnahmen ein, um sicherzustellen, dass jede Übermittlung
-        Ihrer personenbezogenen Daten außerhalb der EU/des EWR durch
-        branchenübliche Vertragsklauseln und nachfolgende Datenschutzgarantien
-        geschützt ist.
+        Wir nutzen Google Analytics 4 (Anbieter: Google Ireland Limited, Gordon
+        House, Barrow Street, Dublin 4, Irland), um die Nutzung unserer Website
+        statistisch auszuwerten und unser Angebot zu verbessern. Die
+        Verarbeitung erfolgt ausschließlich auf Grundlage Ihrer Einwilligung
+        (Art. 6 Abs. 1 lit. a DSGVO). Es werden Cookies gesetzt, die eine
+        Analyse der Benutzung ermöglichen. IP-Adressen werden vor einer weiteren
+        Verarbeitung gekürzt.
       </p>
-      <h3 className="section__title">
-        Änderungen dieser Datenschutzrichtlinie
-      </h3>
+
+      <h3 className="section__title">6. Werbung (Google AdSense)</h3>
       <p className="section__description">
-        Wir behalten uns das Recht vor, diese Datenschutzrichtlinie nach eigenem
-        Ermessen von Zeit zu Zeit ohne vorherige Ankündigung zu ändern, zu
-        aktualisieren oder anzupassen. Hinweise zu Änderungen der
-        Datenschutzrichtlinie werden an einer gut sichtbaren Stelle auf der
-        Website veröffentlicht und treten unmittelbar mit der Veröffentlichung
-        in Kraft. Bitte überprüfen Sie die Website regelmäßig auf mögliche
-        Änderungen. Ihre fortgesetzte Nutzung der Website nach der
-        Veröffentlichung von Änderungen an dieser Datenschutzrichtlinie gilt als
-        Anerkennung und Zustimmung zu sämtlichen Änderungen.
+        Diese Website nutzt – sofern Sie eingewilligt haben – Google AdSense,
+        einen Dienst zum Einbinden von Werbeanzeigen der Google Ireland Limited.
+        Google AdSense verwendet Cookies und vergleichbare Technologien, um
+        Anzeigen zu schalten, die für Sie relevant sind, und um die Effektivität
+        der Anzeigen zu messen. Rechtsgrundlage ist Ihre Einwilligung gemäß Art.
+        6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG. Weitere Informationen
+        finden Sie in der Datenschutzerklärung von Google unter{' '}
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noreferrer"
+          className="underline text-main"
+        >
+          policies.google.com/privacy
+        </a>
+        .
       </p>
-      <h3 className="section__title">Amazon-Nutzungsvereinbarung</h3>
+
+      <h3 className="section__title">7. Empfänger und Drittlandtransfer</h3>
       <p className="section__description">
-        Cholesterintipps.de ist Teilnehmer des Amazon Services LLC Associates
-        Program, eines Partnerwerbeprogramms, das dazu dient, Websites eine
-        Möglichkeit zu bieten, durch Werbung und Verlinkung zu Amazon.com
-        Werbeeinnahmen zu erzielen.
+        Eine Übermittlung Ihrer personenbezogenen Daten an Dritte erfolgt nur an
+        die in dieser Erklärung genannten Auftragsverarbeiter (z. B.
+        Hosting-Anbieter, Newsletter-Dienst, Webanalyse, Werbedienste). Sofern
+        eine Übermittlung in Drittländer (außerhalb der EU/des EWR) erforderlich
+        ist, stützen wir diese auf Standardvertragsklauseln der EU-Kommission
+        gemäß Art. 46 Abs. 2 lit. c DSGVO.
+      </p>
+
+      <h3 className="section__title">8. Speicherdauer</h3>
+      <p className="section__description">
+        Wir speichern personenbezogene Daten nur so lange, wie es für die
+        jeweiligen Zwecke erforderlich ist oder wir gesetzlich zur Aufbewahrung
+        verpflichtet sind. Anschließend werden die Daten gelöscht oder
+        anonymisiert.
+      </p>
+
+      <h3 className="section__title">9. Ihre Rechte</h3>
+      <p className="section__description">
+        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16
+        DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art.
+        18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch gegen
+        die Verarbeitung (Art. 21 DSGVO). Erteilte Einwilligungen können Sie
+        jederzeit mit Wirkung für die Zukunft widerrufen. Zur Wahrnehmung Ihrer
+        Rechte genügt eine formlose Mitteilung an{' '}
+        <a
+          href="mailto:kontakt@cholesterintipps.de"
+          className="underline text-main"
+        >
+          kontakt@cholesterintipps.de
+        </a>
+        . Außerdem haben Sie das Recht, sich bei einer
+        Datenschutz-Aufsichtsbehörde zu beschweren.
+      </p>
+
+      <h3 className="section__title">10. Änderungen dieser Erklärung</h3>
+      <p className="section__description">
+        Wir passen diese Datenschutzerklärung an, sobald Änderungen der von uns
+        durchgeführten Datenverarbeitungen dies erforderlich machen. Die jeweils
+        aktuelle Fassung ist stets auf dieser Seite abrufbar.
+      </p>
+
+      <p className="section__description text-sm opacity-70">
+        Stand: Januar 2026
       </p>
     </div>
   );
