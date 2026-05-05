@@ -10,6 +10,7 @@ import Disclaimer from '../views/Disclaimer';
 import RenderDescription from '../components/RenderDescription';
 import InfinitePost from '../components/InfinitePost';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Comments from '../components/Comments';
 import {
   SITE_URL,
   buildCanonical,
@@ -327,6 +328,11 @@ const Post = () => {
           ))}
         </aside>
       </section>
+
+      <Comments
+        postId={postId as string}
+        initialComments={post.comments || []}
+      />
 
       <Disclaimer />
 
