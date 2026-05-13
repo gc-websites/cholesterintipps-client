@@ -20,6 +20,7 @@ const Terms = lazy(() => import('./pages/Terms'));
 const Generation = lazy(() => import('./pages/Generation'));
 const Product = lazy(() => import('./pages/Product'));
 const ProductGeneration = lazy(() => import('./pages/ProductGeneration'));
+const Calculator = lazy(() => import('./pages/Calculator'));
 
 ReactGA.initialize('G-40WZ1VQM7T');
 ReactGA.send('pageview');
@@ -86,6 +87,7 @@ const App = () => {
           <Route path="/author/:authorId" element={<Author />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/rechner" element={<Calculator />} />
           <Route
             path="/generation"
             element={

@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 import { close } from '../utils/Icons';
 
 import NavBar from './NavBar';
@@ -73,6 +74,23 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
           setIsBurgerOpen={setIsBurgerOpen}
           categories={categories}
         />
+        <Link
+          to="/rechner"
+          onClick={() => setIsBurgerOpen(false)}
+          className="group flex items-center justify-between gap-3 rounded-xl bg-main3 hover:bg-main2 text-white px-4 py-3 transition shadow-md"
+        >
+          <span className="flex flex-col">
+            <span className="font-poppins text-base font-semibold">
+              Cholesterin-Rechner
+            </span>
+            <span className="text-xs opacity-80">
+              LDL, HDL & Risiko sofort auswerten
+            </span>
+          </span>
+          <span className="text-xl group-hover:translate-x-1 transition-transform">
+            →
+          </span>
+        </Link>
         <hr className="w-full border-t-2 border-additionalText dark:border-white m-0 opacity-20" />
         <div className="flex flex-col gap-4">
           <h4 className="font-inter text-lg">Folgen Sie uns:</h4>
