@@ -68,12 +68,6 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
         </button>
         <Logo className="text-2xl w-fit" />
         <ThemeToggle />
-        <NavBar
-          className="flex flex-col gap-y-5"
-          textClassName="text-xl break-words text-additionalText dark:text-white"
-          setIsBurgerOpen={setIsBurgerOpen}
-          categories={categories}
-        />
         <Link
           to="/rechner"
           onClick={() => setIsBurgerOpen(false)}
@@ -91,6 +85,12 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
             →
           </span>
         </Link>
+        <NavBar
+          className="flex flex-col gap-y-5"
+          textClassName="text-xl break-words text-additionalText dark:text-white"
+          setIsBurgerOpen={setIsBurgerOpen}
+          categories={categories}
+        />
         <hr className="w-full border-t-2 border-additionalText dark:border-white m-0 opacity-20" />
         <div className="flex flex-col gap-4">
           <h4 className="font-inter text-lg">Folgen Sie uns:</h4>
