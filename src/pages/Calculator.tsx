@@ -363,26 +363,26 @@ const ValueCard: FC<ValueCardProps> = ({
   const styles = classification ? levelStyles[classification.level] : null;
 
   return (
-    <div className="rounded-xl bg-white dark:bg-additionalText/40 p-5 border border-light dark:border-additionalText/30 shadow-sm">
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div>
-          <h3 className="font-merriweather text-lg font-bold text-mainText dark:text-white">
+    <div className="rounded-xl bg-white dark:bg-additionalText/40 p-4 sm:p-5 border border-light dark:border-additionalText/30 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-2 sm:gap-3 mb-3">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-merriweather text-base sm:text-lg font-bold text-mainText dark:text-white break-words">
             {title}
             {computed && (
-              <span className="ml-2 text-xs font-normal text-additionalText dark:text-white/70">
+              <span className="ml-1.5 sm:ml-2 text-[10px] sm:text-xs font-normal text-additionalText dark:text-white/70">
                 (berechnet)
               </span>
             )}
           </h3>
           {subtitle && (
-            <p className="text-xs text-additionalText dark:text-white/70 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-additionalText dark:text-white/70 mt-0.5">
               {subtitle}
             </p>
           )}
         </div>
         {classification && styles && (
           <span
-            className={`text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap ${styles.chip}`}
+            className={`text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full inline-block max-w-full break-words self-start ${styles.chip}`}
           >
             {classification.label}
           </span>
@@ -390,7 +390,7 @@ const ValueCard: FC<ValueCardProps> = ({
       </div>
 
       <div className="flex items-baseline gap-2 mb-3">
-        <span className="font-merriweather text-3xl font-bold text-mainText dark:text-white">
+        <span className="font-merriweather text-2xl sm:text-3xl font-bold text-mainText dark:text-white break-all">
           {empty ? '–' : fromMg(valueMg, unit, isTg)}
         </span>
       </div>
@@ -403,13 +403,15 @@ const ValueCard: FC<ValueCardProps> = ({
           />
         )}
       </div>
-      <div className="flex justify-between mt-1.5 text-[10px] text-additionalText dark:text-white/60">
+      <div className="flex justify-between mt-1.5 text-[10px] text-additionalText dark:text-white/60 gap-1">
         {scaleLabels.map(l => (
-          <span key={l}>{l}</span>
+          <span key={l} className="truncate">
+            {l}
+          </span>
         ))}
       </div>
       {classification && (
-        <p className="mt-3 text-xs text-additionalText dark:text-white/80">
+        <p className="mt-3 text-[11px] sm:text-xs text-additionalText dark:text-white/80 leading-relaxed">
           {classification.description}
         </p>
       )}
@@ -435,25 +437,25 @@ const RatioCard: FC<RatioCardProps> = ({
   const empty = value === null || classification === null;
   const styles = classification ? levelStyles[classification.level] : null;
   return (
-    <div className="rounded-xl bg-white dark:bg-additionalText/40 p-5 border border-light dark:border-additionalText/30 shadow-sm">
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <div>
-          <h3 className="font-merriweather text-lg font-bold text-mainText dark:text-white">
+    <div className="rounded-xl bg-white dark:bg-additionalText/40 p-4 sm:p-5 border border-light dark:border-additionalText/30 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-2 sm:gap-3 mb-3">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-merriweather text-base sm:text-lg font-bold text-mainText dark:text-white break-words">
             {title}
           </h3>
-          <p className="text-xs text-additionalText dark:text-white/70 mt-0.5">
+          <p className="text-[11px] sm:text-xs text-additionalText dark:text-white/70 mt-0.5">
             {subtitle}
           </p>
         </div>
         {classification && styles && (
           <span
-            className={`text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap ${styles.chip}`}
+            className={`text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full inline-block max-w-full break-words self-start ${styles.chip}`}
           >
             {classification.label}
           </span>
         )}
       </div>
-      <div className="font-merriweather text-3xl font-bold text-mainText dark:text-white mb-3">
+      <div className="font-merriweather text-2xl sm:text-3xl font-bold text-mainText dark:text-white mb-3">
         {empty ? '–' : value!.toFixed(2)}
       </div>
       <div className="relative h-2 rounded-full bg-light dark:bg-mainText/60 overflow-hidden">
@@ -466,13 +468,15 @@ const RatioCard: FC<RatioCardProps> = ({
           />
         )}
       </div>
-      <div className="flex justify-between mt-1.5 text-[10px] text-additionalText dark:text-white/60">
+      <div className="flex justify-between mt-1.5 text-[10px] text-additionalText dark:text-white/60 gap-1">
         {scaleLabels.map(l => (
-          <span key={l}>{l}</span>
+          <span key={l} className="truncate">
+            {l}
+          </span>
         ))}
       </div>
       {classification && (
-        <p className="mt-3 text-xs text-additionalText dark:text-white/80">
+        <p className="mt-3 text-[11px] sm:text-xs text-additionalText dark:text-white/80 leading-relaxed">
           {classification.description}
         </p>
       )}
@@ -745,11 +749,13 @@ const Calculator = () => {
   const tgBounds = rangeFor(RANGES.tg, unit, true);
 
   return (
-    <div className="container section__padding">
+    <div className="container py-8 sm:py-12 md:py-16">
       <div className="max-w-5xl mx-auto">
-        <header className="mb-10 text-center">
-          <h1 className="section__subtitle mb-4">Cholesterin-Rechner</h1>
-          <p className="section__description max-w-3xl mx-auto">
+        <header className="mb-8 sm:mb-10 text-center">
+          <h1 className="font-merriweather text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-mainText dark:text-white mb-3 sm:mb-4 leading-tight">
+            Cholesterin-Rechner
+          </h1>
+          <p className="font-poppins text-sm sm:text-base md:text-lg text-additionalText dark:text-white/80 max-w-3xl mx-auto leading-relaxed">
             Werten Sie Ihre Blutwerte sofort aus: LDL nach Friedewald, Non-HDL,
             sowie die wichtigsten Risiko-Quotienten (TC/HDL, LDL/HDL, Trig/HDL).
             Mit Klassifizierung nach gängigen kardiologischen Leitlinien und
@@ -757,13 +763,13 @@ const Calculator = () => {
           </p>
         </header>
 
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8">
-          <section className="bg-white dark:bg-additionalText/30 rounded-2xl p-6 shadow-sm border border-light dark:border-additionalText/30 h-fit sticky top-4 print:static print:shadow-none">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-merriweather text-xl font-bold text-mainText dark:text-white">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-6 md:gap-8">
+          <section className="bg-white dark:bg-additionalText/30 rounded-2xl p-4 sm:p-6 shadow-sm border border-light dark:border-additionalText/30 h-fit lg:sticky lg:top-4 print:static print:shadow-none">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 sm:mb-6">
+              <h2 className="font-merriweather text-lg sm:text-xl font-bold text-mainText dark:text-white">
                 Ihre Werte
               </h2>
-              <div className="inline-flex rounded-full bg-light dark:bg-mainText/60 p-1 text-sm font-medium">
+              <div className="inline-flex rounded-full bg-light dark:bg-mainText/60 p-1 text-xs sm:text-sm font-medium self-start sm:self-auto">
                 <button
                   type="button"
                   onClick={() => setUnit('mg')}
@@ -974,43 +980,43 @@ const Calculator = () => {
               </label>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3 print:hidden">
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-2.5 sm:gap-3 print:hidden">
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-4 py-2.5 rounded-lg border border-additionalText/30 text-additionalText dark:text-white hover:bg-light dark:hover:bg-mainText/60 transition font-medium"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-lg border border-additionalText/30 text-additionalText dark:text-white hover:bg-light dark:hover:bg-mainText/60 transition font-medium text-sm sm:text-base"
               >
                 Zurücksetzen
               </button>
               <button
                 type="button"
                 onClick={handlePrint}
-                className="px-4 py-2.5 rounded-lg bg-main3 text-white hover:bg-main2 transition font-medium ml-auto"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-main3 text-white hover:bg-main2 transition font-medium sm:ml-auto text-sm sm:text-base"
               >
                 Ergebnis drucken / PDF
               </button>
             </div>
           </section>
 
-          <section>
+          <section className="min-w-0">
             {overall && (
               <div
-                className={`rounded-2xl p-6 mb-6 border ${levelStyles[overall.level].chip} border-current/10`}
+                className={`rounded-2xl p-5 sm:p-6 mb-5 sm:mb-6 border ${levelStyles[overall.level].chip} border-current/10`}
               >
-                <p className="text-sm uppercase tracking-wider opacity-70 mb-1">
+                <p className="text-xs sm:text-sm uppercase tracking-wider opacity-70 mb-1">
                   Gesamteinschätzung
                 </p>
-                <p className="font-merriweather text-2xl font-bold">
+                <p className="font-merriweather text-xl sm:text-2xl font-bold leading-tight">
                   {overall.label}
                 </p>
-                <p className="text-sm mt-2 opacity-90">
+                <p className="text-xs sm:text-sm mt-2 opacity-90 leading-relaxed">
                   Basierend auf {filledClasses.length} eingegebenen Werten und
                   Ihren Risikofaktoren. Ersetzt keine ärztliche Diagnose.
                 </p>
               </div>
             )}
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
               <ValueCard
                 title="Gesamtcholesterin"
                 subtitle="Summe aller Cholesterinfraktionen"
@@ -1087,15 +1093,15 @@ const Calculator = () => {
             </div>
 
             {recommendations.length > 0 && (
-              <div className="rounded-2xl bg-white dark:bg-additionalText/30 p-6 border border-light dark:border-additionalText/30 shadow-sm">
-                <h2 className="font-merriweather text-xl font-bold text-mainText dark:text-white mb-4">
+              <div className="rounded-2xl bg-white dark:bg-additionalText/30 p-4 sm:p-6 border border-light dark:border-additionalText/30 shadow-sm">
+                <h2 className="font-merriweather text-lg sm:text-xl font-bold text-mainText dark:text-white mb-3 sm:mb-4">
                   Persönliche Empfehlungen
                 </h2>
-                <ul className="space-y-3">
+                <ul className="space-y-2.5 sm:space-y-3">
                   {recommendations.map(r => (
                     <li
                       key={r}
-                      className="flex gap-3 text-mainText dark:text-white/90 text-sm leading-relaxed"
+                      className="flex gap-2.5 sm:gap-3 text-mainText dark:text-white/90 text-xs sm:text-sm leading-relaxed"
                     >
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-main3 flex-shrink-0" />
                       <span>{r}</span>
@@ -1107,38 +1113,38 @@ const Calculator = () => {
           </section>
         </div>
 
-        <section className="mt-12 grid md:grid-cols-3 gap-4 print:hidden">
-          <div className="rounded-xl p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30">
-            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2">
+        <section className="mt-8 sm:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 print:hidden">
+          <div className="rounded-xl p-4 sm:p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30">
+            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2 text-sm sm:text-base">
               Was bedeutet LDL?
             </h3>
-            <p className="text-sm text-additionalText dark:text-white/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-additionalText dark:text-white/80 leading-relaxed">
               LDL transportiert Cholesterin in die Gefäße. Hohe Werte lagern
               sich in den Arterienwänden ab und erhöhen das Risiko für
               Herzinfarkt und Schlaganfall.
             </p>
           </div>
-          <div className="rounded-xl p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30">
-            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2">
+          <div className="rounded-xl p-4 sm:p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30">
+            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2 text-sm sm:text-base">
               Friedewald-Formel
             </h3>
-            <p className="text-sm text-additionalText dark:text-white/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-additionalText dark:text-white/80 leading-relaxed">
               LDL = Gesamtcholesterin − HDL − (Triglyceride / 5). Gültig bei
               Triglyceriden unter 400 mg/dL. Andernfalls direkte Messung nötig.
             </p>
           </div>
-          <div className="rounded-xl p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30">
-            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2">
+          <div className="rounded-xl p-4 sm:p-5 bg-white dark:bg-additionalText/30 border border-light dark:border-additionalText/30 sm:col-span-2 md:col-span-1">
+            <h3 className="font-merriweather font-bold text-mainText dark:text-white mb-2 text-sm sm:text-base">
               Warum Non-HDL?
             </h3>
-            <p className="text-sm text-additionalText dark:text-white/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-additionalText dark:text-white/80 leading-relaxed">
               Non-HDL umfasst alle „schlechten" Lipoproteine und gilt heute als
               robuster Risikomarker – besonders bei erhöhten Triglyceriden.
             </p>
           </div>
         </section>
 
-        <p className="mt-10 text-xs text-additionalText dark:text-white/70 leading-relaxed border-t border-light dark:border-additionalText/30 pt-6">
+        <p className="mt-8 sm:mt-10 text-[11px] sm:text-xs text-additionalText dark:text-white/70 leading-relaxed border-t border-light dark:border-additionalText/30 pt-5 sm:pt-6">
           <strong>Wichtiger Hinweis:</strong> Dieser Rechner dient
           ausschließlich Informationszwecken und ersetzt keine ärztliche
           Beratung, Diagnose oder Therapie. Die Klassifizierungen orientieren
@@ -1148,10 +1154,10 @@ const Calculator = () => {
           stets mit Ihrer Ärztin oder Ihrem Arzt.
         </p>
 
-        <div className="mt-8 text-center print:hidden">
+        <div className="mt-6 sm:mt-8 text-center print:hidden">
           <Link
             to="/"
-            className="inline-block text-main3 hover:text-main2 font-medium transition"
+            className="inline-block text-main3 hover:text-main2 font-medium transition text-sm sm:text-base"
           >
             ← Zurück zur Startseite
           </Link>
