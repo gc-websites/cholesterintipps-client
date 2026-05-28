@@ -61,11 +61,6 @@ const hashIdx = (s: string) => {
   return Math.abs(h) % AVATAR_GRADIENTS.length;
 };
 
-const findCategorySlug = (key: string): string => {
-  const c = FORUM_CATEGORIES.find(cat => cat.key === key);
-  return c ? c.slug : '';
-};
-
 const findCategoryEmoji = (key: string): string => {
   const c = FORUM_CATEGORIES.find(cat => cat.key === key);
   return c ? c.emoji : '💬';
@@ -102,36 +97,38 @@ const ForumPreview = () => {
 
   return (
     <section className="container section__padding">
-      <div className="flex items-end justify-between flex-wrap gap-3 mb-6">
-        <div>
-          <span className="inline-block text-[10px] sm:text-xs font-semibold tracking-wider uppercase bg-main/15 text-main3 dark:text-main px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full mb-3">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div className="max-w-2xl">
+          <span className="inline-block text-[11px] font-semibold tracking-wider uppercase bg-main/15 text-main3 dark:text-main px-3 py-1 rounded-full mb-3">
             Community
           </span>
-          <h2 className="section__title m-0">
+          <h2 className="section__title m-0 text-2xl md:text-3xl leading-tight">
             Austausch im{' '}
             <span className="text-main3 dark:text-main">Community-Forum</span>
           </h2>
-          <p className="section__description mt-2 max-w-2xl">
-            Hier diskutieren Leser über Cholesterin, Ernährung, Werte,
-            Medikamente und persönliche Erfahrungen. Kein Konto nötig — einfach
-            mitlesen oder mitschreiben.
+          <p className="section__description mt-3">
+            Leser diskutieren über Cholesterin, Ernährung, Werte, Medikamente
+            und persönliche Erfahrungen. Kein Konto nötig — einfach mitlesen
+            oder mitschreiben.
           </p>
         </div>
         <Link
           to="/forum"
-          className="hidden sm:inline-flex items-center gap-2 text-main3 dark:text-main font-semibold hover:underline shrink-0"
+          className="hidden md:inline-flex items-center gap-2 text-main3 dark:text-main font-semibold hover:gap-3 transition-all shrink-0"
         >
           Zum gesamten Forum
           <span aria-hidden="true">→</span>
         </Link>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-6">
+      {/* Category chips */}
+      <div className="flex flex-wrap gap-2 mb-8">
         {FORUM_CATEGORIES.map(cat => (
           <Link
             key={cat.key}
             to={`/forum/c/${cat.slug}`}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-main/40 hover:border-main3 hover:bg-main/10 text-sm text-mainText dark:text-white dark:border-white/30 dark:hover:bg-white/10 transition"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-mainText/15 hover:border-main3 hover:bg-main/10 text-sm text-mainText dark:text-white dark:border-white/20 dark:hover:bg-white/10 transition"
           >
             <span aria-hidden="true">{cat.emoji}</span>
             <span className="font-medium">{cat.key}</span>
@@ -139,18 +136,19 @@ const ForumPreview = () => {
         ))}
       </div>
 
+      {/* Threads list */}
       {loading ? (
-        <div className="grid gap-3">
+        <ul className="grid gap-4 list-none p-0 m-0">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div
+            <li
               key={i}
-              className="h-20 rounded-xl bg-light dark:bg-mainText/40 animate-pulse"
+              className="h-[132px] sm:h-[148px] rounded-2xl bg-light dark:bg-mainText/40 animate-pulse"
             />
           ))}
-        </div>
+        </ul>
       ) : threads.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-main3/40 dark:border-white/20 p-8 text-center">
-          <p className="text-2xl mb-2" aria-hidden="true">
+        <div className="rounded-2xl border border-dashed border-main3/40 dark:border-white/20 p-10 text-center">
+          <p className="text-3xl mb-2" aria-hidden="true">
             🌱
           </p>
           <p className="font-semibold text-mainText dark:text-white">
@@ -158,30 +156,37 @@ const ForumPreview = () => {
           </p>
           <Link
             to="/forum/new"
-            className="inline-flex mt-4 items-center gap-2 bg-main3 hover:bg-main2 text-white px-5 py-2.5 rounded-xl font-semibold transition"
+            className="inline-flex mt-5 items-center gap-2 bg-main3 hover:bg-main2 text-white px-5 py-2.5 rounded-xl font-semibold transition shadow-md"
           >
             ✍️ Diskussion starten
           </Link>
         </div>
       ) : (
-        <ul className="grid gap-3 list-none p-0 m-0">
+        <ul className="grid gap-4 list-none p-0 m-0">
           {threads.map(t => {
             const href = t.slug
               ? `/forum/t/${encodeURIComponent(t.slug)}`
               : `/forum/t/${encodeURIComponent(t.documentId)}`;
             const [c1, c2] = AVATAR_GRADIENTS[hashIdx(t.authorName || '?')];
-            const catSlug = findCategorySlug(t.category);
             const catEmoji = findCategoryEmoji(t.category);
             const activity = t.lastActivityAt || t.createdAt;
+            const relativeStr = formatRelative(activity, now);
             return (
-              <li key={t.documentId} className="relative">
+              <li key={t.documentId}>
                 <Link
                   to={href}
-                  className="block group rounded-2xl border border-mainText/10 dark:border-white/10 hover:border-main3 dark:hover:border-main bg-white dark:bg-mainText/30 p-4 sm:p-5 transition shadow-sm hover:shadow-md"
+                  className="group relative block rounded-2xl border border-mainText/10 dark:border-white/10 hover:border-main3/60 dark:hover:border-main bg-white dark:bg-mainText/30 p-5 sm:p-6 transition-all duration-200 shadow-sm hover:shadow-lg hover:-translate-y-0.5 overflow-hidden"
                 >
-                  <div className="flex items-start gap-3 sm:gap-4">
+                  {/* Accent stripe on hover */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-main3 via-main2 to-main opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
+
+                  <div className="flex gap-4">
+                    {/* Avatar */}
                     <div
-                      className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md"
+                      className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-md ring-2 ring-white dark:ring-mainText"
                       style={{
                         background: `linear-gradient(135deg, ${c1}, ${c2})`,
                       }}
@@ -190,54 +195,67 @@ const ForumPreview = () => {
                       {getInitials(t.authorName)}
                     </div>
 
+                    {/* Body */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap text-xs text-additionalText dark:text-white/60 mb-1">
+                      {/* Top meta row: author + time, with category chip if room */}
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-[13px] text-additionalText dark:text-white/60 mb-1.5">
                         <span className="font-semibold text-mainText dark:text-white">
                           {t.authorName}
                         </span>
-                        {t.category && (
+                        {relativeStr && (
                           <>
-                            <span aria-hidden="true">·</span>
-                            <span
-                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-main/15 text-main3 dark:text-main font-semibold"
-                              onClick={e => {
-                                e.preventDefault();
-                                if (catSlug)
-                                  window.location.href = `/forum/c/${catSlug}`;
-                              }}
-                            >
-                              <span aria-hidden="true">{catEmoji}</span>
-                              {t.category}
+                            <span aria-hidden="true" className="opacity-50">
+                              ·
                             </span>
+                            <time dateTime={activity}>{relativeStr}</time>
                           </>
                         )}
-                        {activity && (
-                          <>
-                            <span aria-hidden="true">·</span>
-                            <time dateTime={activity}>
-                              {formatRelative(activity, now)}
-                            </time>
-                          </>
+                        {t.category && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-main/15 text-main3 dark:text-main text-[11px] font-semibold">
+                            <span aria-hidden="true">{catEmoji}</span>
+                            {t.category}
+                          </span>
                         )}
                       </div>
-                      <h3 className="font-merriweather font-bold text-base sm:text-lg text-mainText dark:text-white group-hover:text-main3 dark:group-hover:text-main transition leading-snug line-clamp-2">
+
+                      {/* Title */}
+                      <h3 className="font-merriweather font-bold text-base sm:text-lg md:text-xl text-mainText dark:text-white group-hover:text-main3 dark:group-hover:text-main transition-colors leading-snug line-clamp-2 mb-2">
                         {t.title}
                       </h3>
+
+                      {/* Excerpt */}
                       {t.body && (
-                        <p className="hidden sm:block mt-1.5 text-sm text-additionalText dark:text-white/60 line-clamp-2 leading-relaxed">
+                        <p className="text-sm text-additionalText dark:text-white/60 line-clamp-2 leading-relaxed mb-3">
                           {t.body}
                         </p>
                       )}
-                      <div className="mt-2 flex items-center gap-4 text-xs text-additionalText dark:text-white/60">
-                        <span className="inline-flex items-center gap-1">
-                          💬 <strong>{t.commentCount ?? 0}</strong>{' '}
-                          {t.commentCount === 1 ? 'Antwort' : 'Antworten'}
-                        </span>
-                        {typeof t.viewCount === 'number' && t.viewCount > 0 && (
-                          <span className="inline-flex items-center gap-1">
-                            👁 {t.viewCount}
+
+                      {/* Footer: stats + arrow */}
+                      <div className="flex items-center justify-between gap-3 flex-wrap">
+                        <div className="flex items-center gap-4 text-xs sm:text-sm text-additionalText dark:text-white/60">
+                          <span className="inline-flex items-center gap-1.5">
+                            <span aria-hidden="true">💬</span>
+                            <strong className="text-mainText dark:text-white">
+                              {t.commentCount ?? 0}
+                            </strong>
+                            <span className="hidden sm:inline">
+                              {t.commentCount === 1 ? 'Antwort' : 'Antworten'}
+                            </span>
                           </span>
-                        )}
+                          {typeof t.viewCount === 'number' &&
+                            t.viewCount > 0 && (
+                              <span className="inline-flex items-center gap-1.5">
+                                <span aria-hidden="true">👁</span>
+                                {t.viewCount}
+                              </span>
+                            )}
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          className="text-main3 dark:text-main font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          Diskussion öffnen →
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -248,17 +266,18 @@ const ForumPreview = () => {
         </ul>
       )}
 
-      <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      {/* Bottom CTA */}
+      <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-center">
         <Link
           to="/forum"
-          className="sm:hidden inline-flex justify-center items-center gap-2 text-main3 dark:text-main font-semibold hover:underline"
+          className="md:hidden inline-flex justify-center items-center gap-2 text-main3 dark:text-main font-semibold hover:underline py-2"
         >
           Zum gesamten Forum
           <span aria-hidden="true">→</span>
         </Link>
         <Link
           to="/forum/new"
-          className="inline-flex justify-center items-center gap-2 bg-main3 hover:bg-main2 text-white px-5 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
+          className="inline-flex justify-center items-center gap-2 bg-gradient-to-br from-main3 to-main2 hover:from-main2 hover:to-main text-white px-6 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg"
         >
           ✍️ Eigene Diskussion starten
         </Link>
