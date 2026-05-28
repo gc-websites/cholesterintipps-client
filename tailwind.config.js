@@ -39,9 +39,19 @@ export default {
           '0%': { top: '-150%', left: '-150%' },
           '100%': { top: '150%', left: '150%' },
         },
+        'cht-fade': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'cht-pop': {
+          '0%': { opacity: '0', transform: 'translateY(8px) scale(0.97)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
       },
       animation: {
         myshine: 'myshine 3s linear infinite',
+        'cht-fade': 'cht-fade 0.18s ease-out',
+        'cht-pop': 'cht-pop 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
       },
     },
   },

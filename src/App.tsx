@@ -21,6 +21,12 @@ const Generation = lazy(() => import('./pages/Generation'));
 const Product = lazy(() => import('./pages/Product'));
 const ProductGeneration = lazy(() => import('./pages/ProductGeneration'));
 const Calculator = lazy(() => import('./pages/Calculator'));
+const Forum = lazy(() => import('./pages/Forum'));
+const ForumCategory = lazy(() => import('./pages/ForumCategory'));
+const Thread = lazy(() => import('./pages/Thread'));
+const NewThread = lazy(() => import('./pages/NewThread'));
+const Impressum = lazy(() => import('./pages/Impressum'));
+const About = lazy(() => import('./pages/About'));
 
 ReactGA.initialize('G-40WZ1VQM7T');
 ReactGA.send('pageview');
@@ -87,7 +93,14 @@ const App = () => {
           <Route path="/author/:authorId" element={<Author />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/ueber-uns" element={<About />} />
           <Route path="/rechner" element={<Calculator />} />
+          <Route path="/forum" element={<Forum />} />
+          <Route path="/forum/new" element={<NewThread />} />
+          <Route path="/forum/c/:categoryKey" element={<ForumCategory />} />
+          <Route path="/forum/t/:slug" element={<Thread />} />
           <Route
             path="/generation"
             element={

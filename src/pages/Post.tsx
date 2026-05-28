@@ -134,6 +134,42 @@ const Post = () => {
 
   useStructuredData(articleSchema, `article-${post?.documentId || 'none'}`);
 
+  const breadcrumbSchema = useMemo(() => {
+    if (!hasPost) return null;
+    const items: Array<Record<string, unknown>> = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Startseite',
+        item: `${SITE_URL}/`,
+      },
+    ];
+    if (post.category_2?.documentId && post.category_2?.name) {
+      items.push({
+        '@type': 'ListItem',
+        position: 2,
+        name: post.category_2.name,
+        item: `${SITE_URL}/category/${post.category_2.documentId}`,
+      });
+    }
+    items.push({
+      '@type': 'ListItem',
+      position: items.length + 1,
+      name: post.title,
+      item: `${SITE_URL}/post/${post.documentId}`,
+    });
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items,
+    };
+  }, [hasPost, post]);
+
+  useStructuredData(
+    breadcrumbSchema,
+    `breadcrumb-${post?.documentId || 'none'}`,
+  );
+
   if (isLoading) {
     return <Loader />;
   }

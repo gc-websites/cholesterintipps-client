@@ -45,6 +45,30 @@ const Footer: FC<FooterProps> = ({ categories }) => {
             </h4>
             <div className="flex flex-col gap-5">
               <Link
+                to="/about"
+                className="section__description text-white font-light"
+              >
+                Über uns
+              </Link>
+              <Link
+                to="/forum"
+                className="section__description text-white font-light"
+              >
+                Community-Forum
+              </Link>
+              <Link
+                to="/rechner"
+                className="section__description text-white font-light"
+              >
+                Cholesterin-Rechner
+              </Link>
+              <Link
+                to="/impressum"
+                className="section__description text-white font-light"
+              >
+                Impressum
+              </Link>
+              <Link
                 to="/privacy"
                 className="section__description text-white font-light"
               >
@@ -57,8 +81,19 @@ const Footer: FC<FooterProps> = ({ categories }) => {
                 Bedingungen
               </Link>
             </div>
-            <button className="border rounded p-2" onClick={handleFormOpen}>
+            <button
+              type="button"
+              onClick={handleFormOpen}
+              className="group inline-flex items-center justify-center gap-2 bg-white text-main3 hover:bg-main hover:text-white px-5 py-3 rounded-xl font-semibold transition shadow-md hover:shadow-lg w-full md:w-auto"
+            >
+              <span aria-hidden="true">✉️</span>
               Kontaktieren Sie uns
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                →
+              </span>
             </button>
           </div>
           <div className="flex flex-col gap-8">

@@ -1,10 +1,17 @@
 # https://cholesterintipps.de
+# Crawl directives for cholesterintipps.de
+
 User-agent: *
 Allow: /
+
+# Internal / authoring / form pages — not for indexing
 Disallow: /generation
 Disallow: /generation/
+Disallow: /search
 Disallow: /search?
+Disallow: /forum/new
 
+# AdSense / Ads crawlers — explicitly allow full access
 User-agent: Mediapartners-Google
 Allow: /
 
@@ -14,8 +21,13 @@ Allow: /
 User-agent: AdsBot-Google-Mobile
 Allow: /
 
+# Google search crawlers — explicit allow (mirrors default but makes intent
+# visible to Search Console reviewers)
 User-agent: Googlebot
 Allow: /
+Disallow: /search
+Disallow: /forum/new
+Disallow: /generation
 
 User-agent: Googlebot-Image
 Allow: /

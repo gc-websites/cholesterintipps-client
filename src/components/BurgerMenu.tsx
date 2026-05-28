@@ -68,29 +68,65 @@ const BurgerMenu: FC<BurgerMenuProps> = ({
         </button>
         <Logo className="text-2xl w-fit" />
         <ThemeToggle />
-        <Link
-          to="/rechner"
-          onClick={() => setIsBurgerOpen(false)}
-          className="group flex items-center justify-between gap-3 rounded-xl bg-main3 hover:bg-main2 text-white px-4 py-3 transition shadow-md"
-        >
-          <span className="flex flex-col">
-            <span className="font-poppins text-base font-semibold">
-              Cholesterin-Rechner
+        <div className="flex flex-col gap-3">
+          <Link
+            to="/rechner"
+            onClick={() => setIsBurgerOpen(false)}
+            className="group flex items-center justify-between gap-3 rounded-xl bg-main3 hover:bg-main2 text-white px-4 py-3 transition shadow-md"
+          >
+            <span className="flex flex-col">
+              <span className="font-poppins text-base font-semibold">
+                Cholesterin-Rechner
+              </span>
+              <span className="text-xs opacity-80">
+                LDL, HDL & Risiko sofort auswerten
+              </span>
             </span>
-            <span className="text-xs opacity-80">
-              LDL, HDL & Risiko sofort auswerten
+            <span className="text-xl group-hover:translate-x-1 transition-transform">
+              →
             </span>
-          </span>
-          <span className="text-xl group-hover:translate-x-1 transition-transform">
-            →
-          </span>
-        </Link>
+          </Link>
+          <Link
+            to="/forum"
+            onClick={() => setIsBurgerOpen(false)}
+            className="group flex items-center justify-between gap-3 rounded-xl border-2 border-main3 hover:bg-main3/10 text-main3 dark:text-white dark:border-white dark:hover:bg-white/10 px-4 py-3 transition"
+          >
+            <span className="flex flex-col">
+              <span className="font-poppins text-base font-semibold">
+                Community-Forum
+              </span>
+              <span className="text-xs opacity-80">
+                Austausch &amp; Erfahrungen rund um Cholesterin
+              </span>
+            </span>
+            <span className="text-xl group-hover:translate-x-1 transition-transform">
+              →
+            </span>
+          </Link>
+        </div>
         <NavBar
           className="flex flex-col gap-y-5"
           textClassName="text-xl break-words text-additionalText dark:text-white"
           setIsBurgerOpen={setIsBurgerOpen}
           categories={categories}
         />
+        <hr className="w-full border-t-2 border-additionalText dark:border-white m-0 opacity-20" />
+        <div className="flex flex-col gap-4">
+          <Link
+            to="/about"
+            onClick={() => setIsBurgerOpen(false)}
+            className="font-poppins text-lg text-additionalText dark:text-white"
+          >
+            Über uns
+          </Link>
+          <Link
+            to="/impressum"
+            onClick={() => setIsBurgerOpen(false)}
+            className="font-poppins text-lg text-additionalText dark:text-white"
+          >
+            Impressum
+          </Link>
+        </div>
         <hr className="w-full border-t-2 border-additionalText dark:border-white m-0 opacity-20" />
         <div className="flex flex-col gap-4">
           <h4 className="font-inter text-lg">Folgen Sie uns:</h4>
